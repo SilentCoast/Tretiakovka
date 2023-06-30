@@ -1,6 +1,6 @@
 # Tretiakovka
 Simple Android Galery app. Unity, C#, UnityWebRequest, Async
-
+--------------------------------------------------------
 
 First few images get downloaded when you enter the galery.
 
