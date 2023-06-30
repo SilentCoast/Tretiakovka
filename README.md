@@ -12,6 +12,6 @@ Then as you scroll down new images get downloaded asynchronoulsy
 ![image](https://github.com/SilentCoast/Tretiakovka/assets/94042423/96cb569e-41c2-4c3d-a88e-6b56e18b1064)
 ![image](https://github.com/SilentCoast/Tretiakovka/assets/94042423/72399064-af8e-47eb-91ae-9a8693657e6c)
 
-If you click certain image - it opens enlarged
+If you click on certain image - it opens enlarged
 
 ![image](https://github.com/SilentCoast/Tretiakovka/assets/94042423/9d44e646-ad39-4b40-bc49-bc5ab7a6e4a4)
