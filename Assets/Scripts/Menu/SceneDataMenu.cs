@@ -1,6 +1,4 @@
 using Assets.Scripts.Classes;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +10,6 @@ public class SceneDataMenu : MonoBehaviour
     }
     public void OnGaleryClick()
     {
-        
         LoadingController.LoadTo = "Galery";
         SceneManager.LoadScene(1);
     }

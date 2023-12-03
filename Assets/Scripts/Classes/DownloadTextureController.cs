@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Classes
 {
@@ -22,7 +14,7 @@ namespace Assets.Scripts.Classes
             {
                 await Task.Delay(10);
             }
-            Texture texture = texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            Texture texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
             return texture;
         }
     }

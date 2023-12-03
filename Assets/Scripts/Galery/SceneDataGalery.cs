@@ -1,30 +1,24 @@
 ﻿using Assets.Scripts.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Galery
 {
-    public class SceneDataGalery:MonoBehaviour
+    public class SceneDataGalery : MonoBehaviour
     {
-        
-        [SerializeField] 
+        [SerializeField]
         private GameObject Grid;
         [SerializeField]
         private GameObject Content;
 
         private RectTransform rect;
         //ImageHeight is 350 height + 50 space beetwen images devided by 2 because we got 2 columns
-        private int ImageHeight = 400/2;
+        private readonly int ImageHeight = 400 / 2;
         /// <summary>
         /// how much down to the end we need to scroll for download to start
         /// </summary>
-        private int ThresholdToLoadMore = 200;
+        private readonly int ThresholdToLoadMore = 200;
         /// <summary>
         /// Image number on the server (for building url)
         /// </summary>
@@ -50,28 +44,28 @@ namespace Assets.Scripts.Galery
             {
                 rectSizeDeltaY = contentSize - Screen.height;
             }
-            rect.sizeDelta = new Vector2(rect.sizeDelta.x,rectSizeDeltaY);
+            rect.sizeDelta = new Vector2(rect.sizeDelta.x, rectSizeDeltaY);
         }
-        
+
         private void Update()
         {
             //if we scrolled down enough
-            if ((rect.sizeDelta.y-rect.anchoredPosition.y)<=ThresholdToLoadMore)
+            if ((rect.sizeDelta.y - rect.anchoredPosition.y) <= ThresholdToLoadMore)
             {
                 DownloadMoreImages();
                 ImagePosition++;
             }
         }
-        
+
         async private void DownloadMoreImages()
         {
-            if (ImagePosition<= EndpointController.ImageMaxPosition)
+            if (ImagePosition <= EndpointController.ImageMaxPosition)
             {
                 //spawn empty image
                 Texture texture = null;
-                var gm = InstantiateImage(texture,true);
+                var gm = InstantiateImage(texture, true);
                 rect.sizeDelta = new Vector2(rect.sizeDelta.x, rect.sizeDelta.y + ImageHeight);
-                
+
                 //and then wnen texture is downloaded putting it on 
                 await DownloadTextureController
                     .GetTexture(EndpointController.BaseURL + ImagePosition + ".jpg")
@@ -97,7 +91,7 @@ namespace Assets.Scripts.Galery
             var gm = Instantiate(Resources.Load("Prefabs/RawImage"), Grid.transform);
             gm.GetComponent<RawImage>().texture = texture;
         }
-        private GameObject InstantiateImage(Texture texture,bool returnGM)
+        private GameObject InstantiateImage(Texture texture, bool returnGM)
         {
             GameObject gm = (GameObject)Instantiate(Resources.Load("Prefabs/RawImage"), Grid.transform);
             gm.GetComponent<RawImage>().texture = texture;
